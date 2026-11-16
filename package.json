@@ -1,0 +1,14 @@
+{
+  "name": "coreheist-io",
+  "version": "1.0.0",
+  "private": true,
+  "description": "CoreHeist.io - Build. Breach. Escape.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.21.2",
+    "ws": "^8.18.0"
+  }
+}

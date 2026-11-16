@@ -1,0 +1,600 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CoreHeist.io — Build. Breach. Escape.</title>
+  <meta name="description" content="Build a fort, breach rival defenses, steal the glowing core, and escape in CoreHeist.io. A fast multiplayer browser raid game.">
+  <meta name="keywords" content="CoreHeist, multiplayer browser game, fort building game, raid game, io game">
+  <meta name="theme-color" content="#091322">
+  <link rel="canonical" href="https://coreheist.io/">
+
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="CoreHeist.io">
+  <meta property="og:title" content="CoreHeist.io — Build. Breach. Escape.">
+  <meta property="og:description" content="Build defenses, breach rival forts, steal the glowing core, and make it home.">
+  <meta property="og:url" content="https://coreheist.io/">
+  <meta property="og:image" content="https://coreheist.io/social-card.svg">
+  <meta property="og:image:alt" content="CoreHeist.io game branding">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="CoreHeist.io — Build. Breach. Escape.">
+  <meta name="twitter:description" content="Build defenses, breach rival forts, steal the glowing core, and make it home.">
+  <meta name="twitter:image" content="https://coreheist.io/social-card.svg">
+
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+
+  <style>
+    :root {
+      --bg: #08101d;
+      --panel: rgba(18, 29, 49, .78);
+      --panel-solid: #111d31;
+      --line: rgba(177, 224, 255, .15);
+      --text: #f7fbff;
+      --muted: #9bb0c9;
+      --teal: #65e6d4;
+      --yellow: #ffdb61;
+      --pink: #ff6688;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 82% 8%, rgba(101, 230, 212, .17), transparent 30rem),
+        radial-gradient(circle at 12% 42%, rgba(120, 91, 255, .14), transparent 28rem),
+        var(--bg);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .shell {
+      width: min(1160px, calc(100% - 36px));
+      margin: auto;
+    }
+
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 78px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 20px;
+      font-weight: 950;
+      letter-spacing: -.8px;
+    }
+
+    .brand-mark {
+      display: grid;
+      place-items: center;
+      width: 32px;
+      height: 32px;
+      color: #0a1824;
+      border-radius: 10px;
+      background: var(--teal);
+      box-shadow: 0 0 26px rgba(101, 230, 212, .42);
+      transform: rotate(8deg);
+    }
+
+    .brand span {
+      color: var(--teal);
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 25px;
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 750;
+    }
+
+    nav a:hover {
+      color: var(--text);
+    }
+
+    .nav-play,
+    .hero-button {
+      color: #06151c;
+      background: var(--teal);
+      box-shadow: 0 12px 30px rgba(101, 230, 212, .2);
+    }
+
+    .nav-play {
+      padding: 10px 15px;
+      border-radius: 10px;
+      color: #07181d;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1.05fr .95fr;
+      gap: 70px;
+      align-items: center;
+      min-height: 650px;
+      padding: 82px 0 95px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 20px;
+      color: var(--teal);
+      font-size: 12px;
+      font-weight: 950;
+      letter-spacing: 1.7px;
+      text-transform: uppercase;
+    }
+
+    .eyebrow::before {
+      width: 25px;
+      height: 2px;
+      content: "";
+      background: var(--teal);
+    }
+
+    h1 {
+      max-width: 680px;
+      margin: 0;
+      font-size: clamp(52px, 8vw, 104px);
+      line-height: .88;
+      letter-spacing: -7px;
+    }
+
+    h1 em {
+      color: var(--teal);
+      font-style: normal;
+    }
+
+    .hero-copy {
+      max-width: 570px;
+      margin: 26px 0 32px;
+      color: var(--muted);
+      font-size: clamp(17px, 2vw, 21px);
+      line-height: 1.6;
+    }
+
+    .hero-actions {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    .hero-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 170px;
+      padding: 17px 24px;
+      border-radius: 13px;
+      font-weight: 950;
+    }
+
+    .hero-button:hover {
+      filter: brightness(1.1);
+      transform: translateY(-2px);
+    }
+
+    .ghost-button {
+      color: var(--muted);
+      font-weight: 800;
+    }
+
+    .hero-art {
+      position: relative;
+      min-height: 395px;
+      border: 1px solid var(--line);
+      border-radius: 30px;
+      overflow: hidden;
+      background:
+        linear-gradient(rgba(85, 159, 190, .08) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(85, 159, 190, .08) 1px, transparent 1px),
+        #12233b;
+      background-size: 38px 38px;
+      box-shadow: 0 30px 90px rgba(0, 0, 0, .35);
+    }
+
+    .hero-art::after {
+      position: absolute;
+      inset: 0;
+      content: "";
+      background: radial-gradient(circle at 50% 47%, rgba(255, 220, 97, .22), transparent 23%);
+      pointer-events: none;
+    }
+
+    .core {
+      position: absolute;
+      left: 50%;
+      top: 48%;
+      z-index: 2;
+      width: 80px;
+      height: 80px;
+      border: 8px solid #fff3a5;
+      border-radius: 50%;
+      background: #fff8c9;
+      box-shadow: 0 0 25px #ffdc58, 0 0 90px #ffb83e;
+      transform: translate(-50%, -50%);
+    }
+
+    .wall {
+      position: absolute;
+      width: 105px;
+      height: 22px;
+      border: 3px solid #26344c;
+      border-radius: 5px;
+      background: #a66b49;
+      box-shadow: 8px 8px 0 rgba(0, 0, 0, .18);
+    }
+
+    .wall.one {
+      left: 16%;
+      top: 26%;
+      transform: rotate(18deg);
+    }
+
+    .wall.two {
+      right: 14%;
+      top: 27%;
+      transform: rotate(-16deg);
+      background: #74859a;
+    }
+
+    .wall.three {
+      left: 20%;
+      bottom: 23%;
+      transform: rotate(-12deg);
+      background: #74859a;
+    }
+
+    .wall.four {
+      right: 18%;
+      bottom: 22%;
+      transform: rotate(13deg);
+    }
+
+    .runner {
+      position: absolute;
+      z-index: 3;
+      width: 30px;
+      height: 30px;
+      border: 4px solid #fff;
+      border-radius: 50%;
+      background: var(--pink);
+      box-shadow: 0 0 20px var(--pink);
+    }
+
+    .runner.a {
+      left: 20%;
+      top: 56%;
+    }
+
+    .runner.b {
+      right: 20%;
+      top: 51%;
+      background: #58caff;
+      box-shadow: 0 0 20px #58caff;
+    }
+
+    .stamp {
+      position: absolute;
+      right: 22px;
+      bottom: 20px;
+      z-index: 4;
+      padding: 9px 12px;
+      border: 1px solid rgba(255,255,255,.22);
+      border-radius: 9px;
+      color: #d4e4f4;
+      background: rgba(5, 13, 25, .7);
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: 1px;
+    }
+
+    .features {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      margin-bottom: 120px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: var(--line);
+    }
+
+    .feature {
+      padding: 25px 23px;
+      background: rgba(18, 29, 49, .7);
+    }
+
+    .feature strong {
+      display: block;
+      margin-bottom: 8px;
+      color: var(--yellow);
+      font-size: 15px;
+    }
+
+    .feature p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.55;
+    }
+
+    .section {
+      padding-bottom: 120px;
+    }
+
+    .section-heading {
+      max-width: 620px;
+      margin-bottom: 35px;
+    }
+
+    h2 {
+      margin: 0 0 13px;
+      font-size: clamp(34px, 5vw, 58px);
+      letter-spacing: -3px;
+    }
+
+    .section-heading p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.65;
+    }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 17px;
+    }
+
+    .step {
+      padding: 27px;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: var(--panel);
+    }
+
+    .step-number {
+      display: grid;
+      place-items: center;
+      width: 38px;
+      height: 38px;
+      margin-bottom: 24px;
+      border-radius: 11px;
+      color: #07151d;
+      background: var(--teal);
+      font-weight: 950;
+    }
+
+    .step h3 {
+      margin: 0 0 10px;
+      font-size: 20px;
+    }
+
+    .step p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .cta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 30px;
+      padding: 40px;
+      border: 1px solid rgba(101, 230, 212, .28);
+      border-radius: 24px;
+      background: linear-gradient(120deg, rgba(48, 101, 115, .45), rgba(25, 35, 65, .7));
+    }
+
+    .cta h2 {
+      margin-bottom: 8px;
+    }
+
+    .cta p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    footer {
+      padding: 27px 0 40px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    @media (max-width: 800px) {
+      nav a:not(.nav-play) {
+        display: none;
+      }
+
+      .hero {
+        grid-template-columns: 1fr;
+        gap: 35px;
+        padding: 65px 0 80px;
+      }
+
+      .hero-art {
+        min-height: 330px;
+      }
+
+      .features,
+      .steps {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .cta {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+    }
+
+    @media (max-width: 520px) {
+      .shell {
+        width: min(100% - 28px, 1160px);
+      }
+
+      h1 {
+        letter-spacing: -4px;
+      }
+
+      .features,
+      .steps {
+        grid-template-columns: 1fr;
+      }
+
+      .features {
+        margin-bottom: 80px;
+      }
+
+      .section {
+        padding-bottom: 80px;
+      }
+
+      .cta {
+        padding: 26px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <header>
+      <a class="brand" href="/" aria-label="CoreHeist.io home">
+        <b class="brand-mark">C</b>
+        <span>Core</span>Heist.io
+      </a>
+
+      <nav aria-label="Main navigation">
+        <a href="#how-to-play">How to play</a>
+        <a href="#features">Features</a>
+        <a class="nav-play" href="/play.html">Play now</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div>
+          <div class="eyebrow">Multiplayer fort raids</div>
+          <h1>Build.<br><em>Breach.</em><br>Escape.</h1>
+          <p class="hero-copy">
+            Construct a fortress around your glowing core, outsmart rival builders,
+            and make the getaway before the raid timer hits zero.
+          </p>
+
+          <div class="hero-actions">
+            <a class="hero-button" href="/play.html">PLAY COREHEIST</a>
+            <a class="ghost-button" href="#how-to-play">Learn the loop ↓</a>
+          </div>
+        </div>
+
+        <div class="hero-art" aria-label="Illustration of a glowing core surrounded by fort walls">
+          <div class="wall one"></div>
+          <div class="wall two"></div>
+          <div class="wall three"></div>
+          <div class="wall four"></div>
+          <div class="runner a"></div>
+          <div class="runner b"></div>
+          <div class="core"></div>
+          <div class="stamp">LIVE RAID SYSTEM</div>
+        </div>
+      </section>
+
+      <section id="features" class="features" aria-label="Game features">
+        <div class="feature">
+          <strong>01 / Build smart</strong>
+          <p>Gather wood and stone, then turn resources into walls, gates, and launch pads.</p>
+        </div>
+        <div class="feature">
+          <strong>02 / Break in</strong>
+          <p>Read enemy layouts, fight defenders, and smash through weak points.</p>
+        </div>
+        <div class="feature">
+          <strong>03 / Grab the core</strong>
+          <p>Steal the glowing objective and become the most wanted player on the map.</p>
+        </div>
+        <div class="feature">
+          <strong>04 / Get home</strong>
+          <p>Return to your own core to extract the loot and bank your score.</p>
+        </div>
+      </section>
+
+      <section id="how-to-play" class="section">
+        <div class="section-heading">
+          <div class="eyebrow">The raid loop</div>
+          <h2>Every round is a risky heist.</h2>
+          <p>
+            Start with a few resources and a vulnerable core. By the end of the
+            round, your fort should be strong enough to survive a breach—and your
+            route to the enemy should be ready.
+          </p>
+        </div>
+
+        <div class="steps">
+          <article class="step">
+            <div class="step-number">1</div>
+            <h3>Prepare your fort</h3>
+            <p>
+              Move with WASD, gather nearby resource nodes with E, and use
+              right-click to place defensive structures.
+            </p>
+          </article>
+
+          <article class="step">
+            <div class="step-number">2</div>
+            <h3>Raid a rival</h3>
+            <p>
+              During the raid phase, attack players and structures. Use the
+              number keys to switch between build pieces.
+            </p>
+          </article>
+
+          <article class="step">
+            <div class="step-number">3</div>
+            <h3>Extract the prize</h3>
+            <p>
+              Touch an enemy core, carry it home, and reach your own core before
+              another player knocks you out.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="cta">
+          <div>
+            <h2>Ready to make a core heist?</h2>
+            <p>No download. Join a room and start building.</p>
+          </div>
+          <a class="hero-button" href="/play.html">ENTER THE RAID</a>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      © 2026 CoreHeist.io · Build. Breach. Escape.
+    </footer>
+  </div>
+</body>
+</html>

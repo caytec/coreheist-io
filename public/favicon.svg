@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="title desc">
+  <title id="title">CoreHeist icon</title>
+  <desc id="desc">A glowing teal core inside a dark rounded square</desc>
+  <rect width="64" height="64" rx="16" fill="#111d31"/>
+  <circle cx="32" cy="32" r="18" fill="#65e6d4" opacity=".22"/>
+  <circle cx="32" cy="32" r="11" fill="#fff5a7" stroke="#65e6d4" stroke-width="4"/>
+  <path d="M32 7v9M32 48v9M7 32h9M48 32h9" stroke="#65e6d4" stroke-width="4" stroke-linecap="round"/>
+</svg>

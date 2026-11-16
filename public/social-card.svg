@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">CoreHeist.io social card</title>
+  <desc id="desc">CoreHeist.io branding with a glowing core and the phrase Build. Breach. Escape.</desc>
+  <defs>
+    <linearGradient id="background" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#08101d"/>
+      <stop offset="1" stop-color="#182d4a"/>
+    </linearGradient>
+    <radialGradient id="glow">
+      <stop offset="0" stop-color="#fff8c9"/>
+      <stop offset=".35" stop-color="#ffdc58"/>
+      <stop offset="1" stop-color="#ff9e36" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#background)"/>
+  <g opacity=".13" stroke="#65e6d4">
+    <path d="M0 80h1200M0 160h1200M0 240h1200M0 320h1200M0 400h1200M0 480h1200M0 560h1200"/>
+    <path d="M80 0v630M160 0v630M240 0v630M320 0v630M400 0v630M480 0v630M560 0v630M640 0v630M720 0v630M800 0v630M880 0v630M960 0v630M1040 0v630M1120 0v630"/>
+  </g>
+  <circle cx="875" cy="315" r="240" fill="url(#glow)"/>
+  <rect x="710" y="188" width="330" height="24" rx="6" fill="#a96843" stroke="#243750" stroke-width="8" transform="rotate(12 710 188)"/>
+  <rect x="724" y="418" width="330" height="24" rx="6" fill="#718096" stroke="#243750" stroke-width="8" transform="rotate(-12 724 418)"/>
+  <circle cx="875" cy="315" r="63" fill="#fff8c9" stroke="#ffdf62" stroke-width="14"/>
+  <circle cx="875" cy="315" r="91" fill="none" stroke="#65e6d4" stroke-width="5"/>
+  <text x="86" y="245" fill="#ffffff" font-family="Arial, Helvetica, sans-serif" font-size="78" font-weight="900" letter-spacing="-4">Core<tspan fill="#65e6d4">Heist</tspan><tspan font-size="45">.io</tspan></text>
+  <text x="92" y="330" fill="#9bb0c9" font-family="Arial, Helvetica, sans-serif" font-size="32" font-weight="700" letter-spacing="5">BUILD. BREACH. ESCAPE.</text>
+  <text x="92" y="455" fill="#ffffff" font-family="Arial, Helvetica, sans-serif" font-size="25" font-weight="700">A multiplayer fort-raiding browser game</text>
+</svg>
